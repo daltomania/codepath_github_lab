@@ -8,10 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var searchBar: UISearchBar!
     var searchSettings = GithubRepoSearchSettings()
+    var repos: [GithubRepo]!
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,12 +26,18 @@ class ViewController: UIViewController {
         searchBar.sizeToFit()
         navigationItem.titleView = searchBar
         
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         doSearch()
     }
     
     private func doSearch() {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         GithubRepo.fetchRepos(searchSettings, successCallback: { (repos) -> Void in
+            self.repos = repos
+            self.tableView.reloadData()
+            
             for repo in repos {
                 println("[Name: \(repo.name!)]" +
                     "\n\t[Stars: \(repo.stars!)]" +
@@ -40,6 +49,23 @@ class ViewController: UIViewController {
         }, error: { (error) -> Void in
             println(error)
         })
+    }
+    
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if repos != nil {
+            return repos!.count
+        } else {
+            return 0
+        }
+    }
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("RepoTableViewCell", forIndexPath: indexPath) as! RepoTableViewCell
+        cell.repo = repos[indexPath.row]
+        
+        return cell
     }
 }
 
