@@ -32,6 +32,10 @@ class RepoTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.layoutMargins = UIEdgeInsetsZero
         self.preservesSuperviewLayoutMargins = false
+        
+        // avatar rounded edges
+        ownerImageView.layer.cornerRadius = 3
+        ownerImageView.clipsToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
