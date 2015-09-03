@@ -17,6 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.separatorInset = UIEdgeInsetsZero
         
         // initialize UISearchBar
         searchBar = UISearchBar()
