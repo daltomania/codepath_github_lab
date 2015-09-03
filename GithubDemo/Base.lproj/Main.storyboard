@@ -144,7 +144,9 @@
                             <constraint firstItem="qXx-j0-NDi" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="seK-AH-nsb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="x5q-EH-pP8"/>
+                    <navigationItem key="navigationItem" id="x5q-EH-pP8">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="nkF-ud-wIW"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="qXx-j0-NDi" id="7ev-E7-bpv"/>
                     </connections>

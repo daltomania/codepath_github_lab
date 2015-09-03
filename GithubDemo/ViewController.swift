@@ -17,7 +17,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.separatorInset = UIEdgeInsetsZero
+        tableView.separatorInset = UIEdgeInsetsZero
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120
         
         // initialize UISearchBar
         searchBar = UISearchBar()

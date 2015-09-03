@@ -36,6 +36,8 @@ class RepoTableViewCell: UITableViewCell {
         // avatar rounded edges
         ownerImageView.layer.cornerRadius = 3
         ownerImageView.clipsToBounds = true
+        
+        descriptionLabel.preferredMaxLayoutWidth = descriptionLabel.frame.size.width
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
