@@ -41,14 +41,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         GithubRepo.fetchRepos(searchSettings, successCallback: { (repos) -> Void in
             self.repos = repos
             self.tableView.reloadData()
-            
-            for repo in repos {
-                println("[Name: \(repo.name!)]" +
-                    "\n\t[Stars: \(repo.stars!)]" +
-                    "\n\t[Forks: \(repo.forks!)]" +
-                    "\n\t[Owner: \(repo.ownerHandle!)]" +
-                    "\n\t[Avatar: \(repo.ownerAvatarURL!)]")
-            }
+        
             MBProgressHUD.hideHUDForView(self.view, animated: true)
         }, error: { (error) -> Void in
             println(error)
